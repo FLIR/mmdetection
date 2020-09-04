@@ -27,6 +27,21 @@ test_pipeline = [
             dict(type='Collect', keys=['img']),
         ])
 ]
+custom_classes = ('person', 'bicycle', 'vehicle', 'motorcycle', 'airplane', 'bus',
+               'train', 'truck', 'boat', 'traffic light', 'fire hydrant',
+               'stop sign', 'parking meter', 'bench', 'bird', 'cat', 'dog',
+               'horse', 'sheep', 'cow', 'elephant', 'bear', 'zebra', 'giraffe',
+               'backpack', 'umbrella', 'handbag', 'tie', 'suitcase', 'frisbee',
+               'skis', 'snowboard', 'sports ball', 'kite', 'baseball bat',
+               'baseball glove', 'skateboard', 'surfboard', 'tennis racket',
+               'bottle', 'wine glass', 'cup', 'fork', 'knife', 'spoon', 'bowl',
+               'banana', 'apple', 'sandwich', 'orange', 'broccoli', 'carrot',
+               'hot dog', 'pizza', 'donut', 'cake', 'chair', 'couch',
+               'potted plant', 'bed', 'dining table', 'toilet', 'tv', 'laptop',
+               'mouse', 'remote', 'keyboard', 'cell phone', 'microwave',
+               'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock',
+               'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush')
+# for original <200 img ATR dataset
 data = dict(
     samples_per_gpu=2,
     workers_per_gpu=2,
@@ -34,17 +49,43 @@ data = dict(
         type=dataset_type,
         ann_file=data_root + '/train/random_ATR_anno.json',
         img_prefix=data_root + 'train/',
-        pipeline=train_pipeline),
+        pipeline=train_pipeline,
+        classes=custom_classes),
     val=dict(
         type=dataset_type,
         ann_file=data_root + '/val/random_ATR_anno.json',
         img_prefix=data_root + 'val/',
-        pipeline=test_pipeline),
+        pipeline=test_pipeline,
+        classes=custom_classes),
     test=dict(
         type=dataset_type,
         ann_file=data_root + '/val/random_ATR_anno.json',
         img_prefix=data_root + 'val/',
-        pipeline=test_pipeline))
+        pipeline=test_pipeline,
+        classes=custom_classes))
+
+# for 2.5k dataset 2
+# data = dict(
+#     samples_per_gpu=2,
+#     workers_per_gpu=2,
+#     train=dict(
+#         type=dataset_type,
+#         ann_file=data_root + '/train/None.json',
+#         img_prefix=data_root + 'train/',
+#         pipeline=train_pipeline,
+#         classes=custom_classes),
+#     val=dict(
+#         type=dataset_type,
+#         ann_file=data_root + '/val/None.json',
+#         img_prefix=data_root + 'val/',
+#         pipeline=test_pipeline,
+#         classes=custom_classes),
+#     test=dict(
+#         type=dataset_type,
+#         ann_file=data_root + '/val/None.json',
+#         img_prefix=data_root + 'val/',
+#         pipeline=test_pipeline,
+#         classes=custom_classes))
 evaluation = dict(metric=['bbox', 'segm'])
 # data = dict(
 #     samples_per_gpu=2,
