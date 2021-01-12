@@ -33,6 +33,7 @@ class CocoDataset(CustomDataset):
                'oven', 'toaster', 'sink', 'refrigerator', 'book', 'clock',
                'vase', 'scissors', 'teddy bear', 'hair drier', 'toothbrush')
 
+
     def load_annotations(self, ann_file):
         """Load annotation from COCO style annotation file.
 
