@@ -4,7 +4,7 @@
 2) {mmdetection root} must be added to your PYTHONPATH
 3) Neural-Toolkit must be cloned on to your computer. Add the ROOT_DIR for neural toolkit to your PYTHONPATH env variable. Also add {NTK_ROOT_DIR}/Dataset-toolkit to your PYTHONPATH.
 4) In your config file change the variable associated with `dataset_type` to 'FlirNtk'. 
-5) Change the _base_ file from `../_base_/default_runtime.py` to `../_base_/default_runtime_FLIR.py` the import change to this file is the `log_config[hooks]` arg (must be `TensorboardLoggerHookFlir`)
+5) Change the _base_ file from `../_base_/default_runtime.py` to `../_base_/default_runtime_FLIR.py` the important change to the run time file is the `log_config[hooks]` arg (must be `TensorboardLoggerHookFlir`)
 
 Several customizations are allowed for the tensorboard logger. See `{mmdet_root}/datasets/flir_ntk.py` for details. These args can be altered in your config by adding them to the `evaluation` variable. The function parameter name you want to alter should the dict key and the parameter value desired should be the dict value. 
 
