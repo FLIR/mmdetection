@@ -1,1 +1,2 @@
 seaborn==0.11.1
+tensorboard==2.4.1
