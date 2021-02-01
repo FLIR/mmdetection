@@ -1,0 +1,4 @@
+seaborn==0.11.1
+tensorboard==2.4.1
+blessed==1.17.12
+pandas==1.1.1
